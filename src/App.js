@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from "react";
+import Modal from "./Modal";
+import "./App.css";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpen = () => {
+    setShowModal(true);
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
+  const handleSave = () => {
+    // Add your save logic here
+    console.log("Form saved");
+    setShowModal(false);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Form Modal Example</h1>
+      <button onClick={handleOpen}>Open Modal</button>
+      <Modal
+        show={showModal}
+        handleClose={handleClose}
+        handleSave={handleSave}
+      />
     </div>
   );
 }
